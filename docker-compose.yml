@@ -1,0 +1,19 @@
+version: '2.2'
+
+services:
+
+  angular-cli:
+    build: .
+    image: rpassmore/docker-angular-cli
+    container_name: docker-angular-cli
+    
+    ports:
+      - "8080:8080"
+      - "4200:4200"
+    volumes:
+      # Mount a specific folder on the host as the geoserver data folder
+      # - /home/rob/Documents/docker/geoserver/geoserver:/geoserver_data/data
+      
+      # Add a volume from the host to allow easy transfer of files
+      - /home/rob/Documents:/host/files
+      
