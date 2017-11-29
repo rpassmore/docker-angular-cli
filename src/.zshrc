@@ -1,0 +1,46 @@
+export TERM="xterm-256color"
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+#zstyle :compinstall filename '.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# load zgen
+source "${HOME}/.zgen/zgen.zsh"
+
+# if the init scipt doesn't exist
+if ! zgen saved; then
+  echo "Creating a zgen save"
+  zgen oh-my-zsh
+  
+  # plugins
+  zgen oh-my-zsh
+  zgen oh-my-zsh plugins/git
+  zgen oh-my-zsh plugins/sudo
+  zgen oh-my-zsh plugins/command-not-found
+  zgen oh-my-zsh plugins/docker
+  zgen oh-my-zsh plugins/docker-compose
+
+  #Theme load powerlevel9k
+  zgen load bhilburn/powerlevel9k powerlevel9k
+  
+  #Other plugins
+  zgen load zsh-users/zsh-syntax-highlighting
+  zgen load zsh-users/zsh-autosuggestions    
+
+  # generate the init script from plugins above
+  zgen save
+fi
+
+
+
+
